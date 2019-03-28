@@ -130,15 +130,17 @@ order by last_name asc;
 -- have also soared in popularity. Use subqueries to display the titles of movies 
 -- starting with the letters K and Q whose language is English.
 
-select film.title,
+select * from film;
+select * from language; 
+select film.title
 from film
+where 
 film.language_id in
 (
-select language.language_id 
-from language
-where name = 'English'
-and (title like 'K' or 'Q'));
-------------------------------------------
+select l.language_id 
+from language l
+where l.name = 'English'
+and (title like 'K%' or title like 'Q%'));
 
 -- 7b. Use subqueries to display all actors who appear in the film Alone Trip.
 
